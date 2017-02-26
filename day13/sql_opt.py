@@ -9,7 +9,7 @@ from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import sessionmaker, relationship
 
 engine = create_engine("mysql+pymysql://root:123456@192.168.100.5/test",
-                       encoding='utf-8', echo=True)
+                       encoding='utf-8', echo=False)
 Base = declarative_base()  # 生成orm基类
 
 class Server_info(Base):
@@ -24,7 +24,7 @@ class Server_info(Base):
 class Server_group(Base):
     __tablename__ = 'server_group'
     id = Column(Integer, primary_key=True)
-    server_id = (Integer, ForeignKey('server_info.id'))
+    server_id = Column(Integer, ForeignKey('server_info.id'))
     group_id = Column(Integer, ForeignKey('group_info.id'))
 
 class User_info(Base):
@@ -36,8 +36,8 @@ class User_info(Base):
 class User_group(Base):
     __tablename__ = 'user_group'
     id = Column(Integer, primary_key=True)
-    user_id = (Integer, ForeignKey('user_info.id'))
-    group_id = (Integer, ForeignKey('server_group.id'))
+    user_id = Column(Integer, ForeignKey('user_info.id'))
+    group_id = Column(Integer, ForeignKey('group_info.id'))
 
 class Group_info(Base):
     __tablename__ = 'group_info'
