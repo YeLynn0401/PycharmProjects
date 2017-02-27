@@ -15,11 +15,12 @@ Base = declarative_base()  # 生成orm基类
 class Server_info(Base):
     __tablename__ = 'server_info'
     id = Column(Integer, primary_key=True)
-    server_name = Column(String(64))
     server_ip = Column(String(64))
     server_port = Column(Integer)
+    user_name = Column(String(64))
     server_pwd = Column(String(128))
     server_key = Column(String(128))
+
 
 class Server_group(Base):
     __tablename__ = 'server_group'
@@ -33,11 +34,13 @@ class User_info(Base):
     user_name = Column(String(64))
     user_pwd = Column(String(128))
 
-class User_group(Base):
-    __tablename__ = 'user_group'
+class User_property(Base):
+    # 用户管理的主机以及主机组，主机和主机组只能填一个
+    __tablename__ = 'user_property'
     id = Column(Integer, primary_key=True)
     user_id = Column(Integer, ForeignKey('user_info.id'))
-    group_id = Column(Integer, ForeignKey('group_info.id'))
+    server_id = Column(Integer, ForeignKey('server_info.id'))
+    server_group = Column(Integer, ForeignKey('server_group.id'))
 
 class Group_info(Base):
     __tablename__ = 'group_info'
