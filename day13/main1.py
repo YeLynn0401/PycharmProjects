@@ -113,29 +113,33 @@ def host_add():
     else:
         print('服务器名和IP不能为空')
 
-def host_add_group():  # 主机分组 # TODO
+
+def host_add_group():  # 主机分组
     # 查询组信息
-    data = session.query(table_opt.Group_info).filter_by().all()
-    for i in data:
-        print(i.id, i.group_name)
-    if not data:
+    group = session.query(table_opt.HostGroup).filter_by().all()
+    # for i in group:
+    #     print(i.id, i.group_name)
+
+    if not group:
         print('请先添加分组')
         return
+    for i in group:
+        print(i.id, i.name)
     print('请选择需要操作的组ID')
     # 选择要操作的组
-    group = input('ID：').strip()
-    c = cho(group, data)
+    group_id = input('ID：').strip()
+    c = cho(group_id, group)
     if c:
-        host = session.query(table_opt.Server_info).filter_by().all()
+        host = session.query(table_opt.Host).filter_by().all()
         # 打印主机列表
         if host:
             print('id,主机名，ip')
             for i in host:
-                print(i.id, i.server_name, i.server_ip)
+                print(i.id, i.name, i.ip)
             h = input('ID').strip()
             choise = cho(h, host)
             if choise:
-                obj1 = table_opt.Server_group(server_id=int(choise), group_id=int(c))
+                obj1 = table_opt.Host_m2m_HostGroup(host_id=int(choise), group_id=int(c))
                 session.add(obj1)
                 session.commit()
                 print('添加成功')
@@ -192,15 +196,39 @@ def create_group():
 
 
 def login_check(func):
-    def wrapper(*wargs, **kwargs):
+    def wrapper(*args, **kwargs):
         if not user_id:
             print('请登录。')
             return
-        s = func(*wargs, **kwargs)
+        s = func(*args, **kwargs)
         return s
     return wrapper
 
 
+def add_host_user():
+    name = input('用户名：').strip()
+    pwd = input('密 码：').strip()
+    key = input('key：').strip()
+    if key:
+        user1 = table_opt.HostUser(name=name, key=key)
+    if pwd:
+        user1 = table_opt.HostUser(name=name, pwd=pwd)
+    try:
+        session.add(user1)
+        session.commit()
+        print('ok')
+    except:
+        print('error')
+
+
+def print_host_list(user_id):
+    data = session.query(table_opt.User).filter_by(id=user_id).first()
+    for i in enumerate(data.permission):
+        print(i[0], i[1].host.name, i[1].host.ip, i[1].host.port)
+    # print(data.permission[0].host.name)
+    # for i in data:
+    #     print(i.permission.host.name, i.permission.host.groups)
+    print('eeee')
 @login_check
 def test(a):
     print(a)
@@ -210,9 +238,15 @@ if __name__ == '__main__':
     user_name = None
     while True:
         if user_id:
-            print('1、{}：注销\n2、添加主机\n3、创建主机组\n4、主机分组\n5、用户分组\n6、添加用户'.format(user_name))
+            print('1、{}：注销\n2、添加主机\n'
+                  '3、创建主机组\n4、主机分组\n'
+                  '5、用户分配主机\n6、添加跳板机用户\n'
+                  '7、添加主机账户\n8、打印主机表'.format(user_name))
         else:
-            print('1、登陆\n2、添加主机\n3、创建主机组\n4、主机分组\n5、用户分组\n6、添加用户'.format(user_name))
+            print('1、登陆\n2、添加主机\n'
+                  '3、创建主机组\n4、主机分组\n'
+                  '5、用户分配主机\n6、添加跳板机用户\n'
+                  '7、添加主机账户\n8、打印主机表'.format(user_name))
         user_input = input('').strip()
         if user_input == '1':
             if user_id:  # 注销
@@ -235,4 +269,8 @@ if __name__ == '__main__':
         elif user_input == '6':
             user_add()
         elif user_input == '7':
-            test('asf')
+            add_host_user()
+            # data = session.query('host').filter_by(id=1).first()
+            # data.groups= []
+        elif user_input == '8':
+            print_host_list(user_id)
