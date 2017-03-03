@@ -46,7 +46,7 @@ def posix_shell(client_name, hostname, username, chan):
         tty.setraw(sys.stdin.fileno())
         tty.setcbreak(sys.stdin.fileno())
         chan.settimeout(0.0)
-
+        tem = []
         while True:
             r, w, e = select.select([chan, sys.stdin], [], [])
 
@@ -60,14 +60,23 @@ def posix_shell(client_name, hostname, username, chan):
                     sys.stdout.write(x)
 
                     sys.stdout.flush()
+                    # print(x)
                 except socket.timeout:
                     pass
             if sys.stdin in r:
+
                 x = sys.stdin.read(1)
                 if len(x) == 0:
                     break
                 chan.send(x)
-                # print(x)
+                # print(x.encode())
+                if '\r' in x:
+                    print('\r\n{}'.format(time.strftime("%Y-%m-%d-%H:%M:%S", time.localtime())), client_name, hostname,
+                          username, 'cmd:', ''.join(tem))
+                    tem = []
+                    continue
+                    # print('huanhang')
+                tem.append(x)
 
     finally:
         termios.tcsetattr(sys.stdin, termios.TCSADRAIN, oldtty)
