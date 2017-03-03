@@ -5,6 +5,7 @@ import re
 import table_opt
 from sqlalchemy.orm import sessionmaker
 import paramiko
+import ssh_server
 
 session_class = sessionmaker(bind=table_opt.engine)
 session = session_class()
@@ -274,3 +275,6 @@ if __name__ == '__main__':
             # data.groups= []
         elif user_input == '8':
             print_host_list(user_id)
+        elif user_input == '9':
+            conn = ssh_server.conn(user_name)
+            conn()

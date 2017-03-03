@@ -103,6 +103,7 @@ def forward_tunnel(local_port, remote_host, remote_port, transport):
 def verbose(s):
     if g_verbose:
         print(s)
+        print('ssssss')
 
 
 HELP = """\

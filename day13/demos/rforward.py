@@ -83,6 +83,7 @@ def reverse_forward_tunnel(server_port, remote_host, remote_port, transport):
 def verbose(s):
     if g_verbose:
         print(s)
+        print('sssssss')
 
 
 HELP = """\

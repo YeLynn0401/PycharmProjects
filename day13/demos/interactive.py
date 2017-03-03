@@ -19,6 +19,7 @@
 
 import socket
 import sys
+import time
 from paramiko.py3compat import u
 
 # windows does not have termios...
@@ -30,16 +31,16 @@ except ImportError:
     has_termios = False
 
 
-def interactive_shell(chan):
+def interactive_shell(client_name, hostname, username, chan):
     if has_termios:
-        posix_shell(chan)
+        posix_shell(client_name,hostname, username, chan)
     else:
-        windows_shell(chan)
+        windows_shell(client_name,hostname, username, chan)
 
 
-def posix_shell(chan):
+def posix_shell(client_name, hostname, username, chan):
     import select
-    
+    print('action')
     oldtty = termios.tcgetattr(sys.stdin)
     try:
         tty.setraw(sys.stdin.fileno())
@@ -48,13 +49,16 @@ def posix_shell(chan):
 
         while True:
             r, w, e = select.select([chan, sys.stdin], [], [])
+
             if chan in r:
                 try:
                     x = u(chan.recv(1024))
+                    # print(x)
                     if len(x) == 0:
                         sys.stdout.write('\r\n*** EOF\r\n')
                         break
                     sys.stdout.write(x)
+
                     sys.stdout.flush()
                 except socket.timeout:
                     pass
@@ -63,18 +67,19 @@ def posix_shell(chan):
                 if len(x) == 0:
                     break
                 chan.send(x)
+                # print(x)
 
     finally:
         termios.tcsetattr(sys.stdin, termios.TCSADRAIN, oldtty)
+        print('aaa')
 
     
 # thanks to Mike Looijmans for this code
-def windows_shell(chan):
+def windows_shell(client_name,hostname, username, chan):
     import threading
-
     sys.stdout.write("Line-buffered terminal emulation. Press F6 or ^Z to send EOF.\r\n\r\n")
-        
     def writeall(sock):
+
         while True:
             data = sock.recv(256)
             if not data:
@@ -83,16 +88,21 @@ def windows_shell(chan):
                 break
             sys.stdout.write(data.decode())
             sys.stdout.flush()
-        
     writer = threading.Thread(target=writeall, args=(chan,))
     writer.start()
         
     try:
+        tem = []
         while True:
             d = sys.stdin.read(1)
             if not d:
                 break
             chan.send(d)
+            if d == '\n':
+                print('{}'.format(time.strftime("%Y-%m-%d-%H:%M:%S", time.localtime())), client_name, hostname, username, 'cmd:', ''.join(tem))
+                tem = []
+                continue
+            tem.append(d)
     except EOFError:
         # user hit ^Z or F6
         pass

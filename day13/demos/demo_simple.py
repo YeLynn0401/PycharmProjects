@@ -88,6 +88,7 @@ try:
 
     chan = client.invoke_shell()
     print(repr(client.get_transport()))
+    print('befau')
     print('*** Here we go!\n')
     interactive.interactive_shell(chan)
     chan.close()
