@@ -19,8 +19,23 @@ class Host(Base):
     ip = Column(String(15), unique=True, nullable=False)
     port = Column(Integer, default=22)
     name = Column(String(64), default='host')
-    groups = relationship('HostGroup', secondary='host_m2m_hostgroup', backref='host')
-    users = relationship('Host_m2m_Hostuser', backref='host')
+    # groups = relationship('HostGroup', secondary='host_m2m_hostgroup', backref='host')
+    # users = relationship('Host_m2m_Hostuser', backref='host')
+
+class HostUser(Base):
+    __tablename__ = 'hostuser'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(64))
+    pwd = Column(String(64))
+    key = Column(String(128))
+    hosts = relationship('Host', secondary='host_m2m_hostuser', backref='hostuser')
+
+class RemoteUser(Base):
+    __tablename__ = 'remoteuser'
+    id = Column(Integer, primary_key=True)
+    name = Column(String(64))
+    pwd = Column(String(64))
+    permission = relationship('Host_m2m_Hostuser', secondary='userpermission', backref='user')
 
 
 class HostGroup(Base):
@@ -32,23 +47,7 @@ class HostGroup(Base):
         return self.name
 
 
-class HostUser(Base):
-    __tablename__ = 'hostuser'
-    id = Column(Integer, primary_key=True)
-    name = Column(String(64))
-    pwd = Column(String(64))
-    key = Column(String(128))
-    hosts = relationship('Host', secondary='host_m2m_hostuser', backref='hostuser')
-
-class User(Base):
-    __tablename__ = 'user'
-    id = Column(Integer, primary_key=True)
-    name = Column(String(64))
-    pwd = Column(String(64))
-    permission = relationship('Host_m2m_Hostuser', secondary='userpermission', backref='user')
-
-
-class Host_m2m_Hostuser(Base):
+class bind_host(Base):
     __tablename__ = 'host_m2m_hostuser'
     id = Column(Integer, primary_key=True)
     host_id = Column(Integer, ForeignKey('host.id'))

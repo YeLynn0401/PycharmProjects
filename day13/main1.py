@@ -223,13 +223,28 @@ def add_host_user():
 
 
 def print_host_list(user_id):
+    info_dict = {}
     data = session.query(table_opt.User).filter_by(id=user_id).first()
-    for i in enumerate(data.permission):
-        print(i[0], i[1].host.name, i[1].host.ip, i[1].host.port)
-    # print(data.permission[0].host.name)
-    # for i in data:
-    #     print(i.permission.host.name, i.permission.host.groups)
-    print('eeee')
+    for i in data.permission:
+        print(i.host.name, )
+    # for i in data.permission.host.name:
+    #     # 格式化数据，去重复
+    #     info_dict[i.host.ip] = [i.host.name, i]
+    # for k in info_dict:
+    #     print(k)
+    # ip = input('请输入所选主机IP').strip()
+    # try:
+    #
+    #     u = info_dict.get(ip)[1]
+    #     users = u.m
+    #     for i in users:
+    #         print(i.id)
+    #
+    # except Exception as e:
+    #     print('选择有误。')
+    #     print(e)
+
+
 @login_check
 def test(a):
     print(a)
