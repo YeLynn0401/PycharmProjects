@@ -60,7 +60,7 @@ while True:
                     assert q
                     for i in enumerate(q):
                         if i[1].stu_id == date.id:
-                            print('班里共{}人，你在排名是第：{}位，作业总分{}分'.format(q.count(), i[1].stu_id, i[1].results))
+                            print('班里共{}人，你在排名是第：{}位，作业总分{}分'.format(q.count(), i[0]+1, i[1].results))
 
             else:
                 print('密码错误')

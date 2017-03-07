@@ -11,11 +11,6 @@ session_class = sessionmaker(bind=table_opt.engine)
 session = session_class()
 
 
-# user1 = table_opt.User_info(user_name='alex', user_pwd='123')
-#
-# session.add(user1)
-#
-# session.commit()
 def ssh_conn(host, port, username, pwd):
     # 创建SSH对象
     ssh = paramiko.SSHClient()
@@ -222,27 +217,20 @@ def add_host_user():
         print('error')
 
 
-def print_host_list(user_id):
+def print_host_list(user_id, user_name):
     info_dict = {}
     data = session.query(table_opt.User).filter_by(id=user_id).first()
-    for i in data.permission:
-        print(i.host.name, )
-    # for i in data.permission.host.name:
-    #     # 格式化数据，去重复
-    #     info_dict[i.host.ip] = [i.host.name, i]
-    # for k in info_dict:
-    #     print(k)
-    # ip = input('请输入所选主机IP').strip()
-    # try:
-    #
-    #     u = info_dict.get(ip)[1]
-    #     users = u.m
-    #     for i in users:
-    #         print(i.id)
-    #
-    # except Exception as e:
-    #     print('选择有误。')
-    #     print(e)
+    tem = list(enumerate(data.permission))
+    for i in tem:
+        print(i[0], i[1].host.name, i[1].host.ip, i[1].host.port, i[1].hostuser.name)
+    ids = input('conn id:').strip()
+    ids = int(ids)
+    try:
+        print(tem[ids][1].host.ip, tem[ids][1].host.port, tem[ids][1].hostuser.name, tem[ids][1].hostuser.pwd, tem[ids][1].hostuser.key)
+        connn = ssh_server.conn(user_name, tem[ids][1].host.ip, tem[ids][1].host.port, tem[ids][1].hostuser.name, tem[ids][1].hostuser.pwd, tem[ids][1].hostuser.key)
+        connn()
+    except:
+        print('bye...')
 
 
 @login_check
@@ -272,8 +260,6 @@ if __name__ == '__main__':
             ret = login()
             if ret:
                 user_id, user_name = ret
-
-        # date = session.query(table_opt)
         elif user_input == '2':
             host_add()
         elif user_input == '3':
@@ -286,10 +272,8 @@ if __name__ == '__main__':
             user_add()
         elif user_input == '7':
             add_host_user()
-            # data = session.query('host').filter_by(id=1).first()
-            # data.groups= []
         elif user_input == '8':
-            print_host_list(user_id)
-        elif user_input == '9':
-            conn = ssh_server.conn(user_name)
-            conn()
+            print_host_list(user_id, user_name)
+        # elif user_input == '9':
+        #     conn = ssh_server.conn(user_name)
+        #     conn()

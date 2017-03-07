@@ -19,20 +19,18 @@
 # 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA.
 
 
-import base64
 import getpass
-import os
 import socket
 import sys
 import traceback
-from paramiko.py3compat import input
 
 import paramiko
+from paramiko.py3compat import input
+
 try:
     import interactive
 except ImportError:
-    from . import interactive
-
+    from day13 import interactive
 
 # setup logging
 paramiko.util.log_to_file('demo_simple.log')

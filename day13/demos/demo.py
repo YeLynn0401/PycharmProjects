@@ -19,22 +19,20 @@
 # 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA.
 
 
-import base64
-from binascii import hexlify
 import getpass
 import os
-import select
 import socket
 import sys
-import time
 import traceback
-from paramiko.py3compat import input
+from binascii import hexlify
 
 import paramiko
+from paramiko.py3compat import input
+
 try:
     import interactive
 except ImportError:
-    from . import interactive
+    from day13 import interactive
 
 
 def agent_auth(transport, username):

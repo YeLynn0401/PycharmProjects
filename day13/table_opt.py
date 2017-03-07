@@ -39,6 +39,7 @@ class HostUser(Base):
     pwd = Column(String(64))
     key = Column(String(128))
     hosts = relationship('Host', secondary='host_m2m_hostuser', backref='hostuser')
+    m2m = relationship('Host_m2m_Hostuser',backref='hostuser')
 
 class User(Base):
     __tablename__ = 'user'

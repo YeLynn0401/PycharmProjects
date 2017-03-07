@@ -35,7 +35,10 @@ def interactive_shell(client_name, hostname, username, chan):
     if has_termios:
         posix_shell(client_name,hostname, username, chan)
     else:
-        windows_shell(client_name,hostname, username, chan)
+        try:
+            windows_shell(client_name,hostname, username, chan)
+        except:
+            pass
 
 
 def posix_shell(client_name, hostname, username, chan):
