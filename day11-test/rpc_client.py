@@ -9,7 +9,7 @@ import uuid
 class FibonacciRpcClient(object):
     def __init__(self):
         self.connection = pika.BlockingConnection(pika.ConnectionParameters(
-            host='localhost'))
+            host='192.168.100.5'))
 
         self.channel = self.connection.channel()
 
@@ -32,7 +32,7 @@ class FibonacciRpcClient(object):
                                        reply_to=self.callback_queue,
                                        correlation_id=self.corr_id,
                                    ),
-                                   body=str(n))
+                                   body=n)
         while self.response is None:
             self.connection.process_data_events()  # 非阻塞接收
         return self.response
@@ -42,6 +42,5 @@ fibonacci_rpc = FibonacciRpcClient()
 
 # print(" [x] Requesting fib(30)")
 while True:
-    print('action')
     response = fibonacci_rpc.call()
-    print(" [.] Got %r" % response.decode())
+    print(response.decode())

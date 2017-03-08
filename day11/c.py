@@ -2,19 +2,44 @@
 # -*- coding: utf-8 -*- 
 
 import pika
-import time
-import sys
+import uuid
 
-connection = pika.BlockingConnection(pika.ConnectionParameters('localhost'))
-channel = connection.channel()
-# 声明queue
-channel.queue_declare(queue='task_queue')
-# n RabbitMQ a message can never be sent directly to the queue, it always needs to go through an exchange.
-message = ' '.join(sys.argv[1:]) or "Hello World! %s" % time.time()
-channel.basic_publish(exchange='', routing_key='task_queue', body=message,
-                      properties=pika.BasicProperties(
-                          delivery_mode=2,  # make message persistent
-                      )
-                      )
-print(" [x] Sent %r" % message)
-connection.close()
+
+class FibonacciRpcClient(object):
+    def __init__(self):
+        self.connection = pika.BlockingConnection(pika.ConnectionParameters(
+            host='192.168.100.5'))
+
+        self.channel = self.connection.channel()
+
+        result = self.channel.queue_declare(exclusive=True)
+        self.callback_queue = result.method.queue
+
+        self.channel.basic_consume(self.on_response, no_ack=True,
+                                   queue=self.callback_queue)
+
+    def on_response(self, ch, method, props, body):
+        if self.corr_id == props.correlation_id:
+            self.response = body
+
+    def call(self, n):
+        self.response = None
+        self.corr_id = str(uuid.uuid4())
+        self.channel.basic_publish(exchange='',
+                                   routing_key='rpc_queue',
+                                   properties=pika.BasicProperties(
+                                       reply_to=self.callback_queue,
+                                       correlation_id=self.corr_id,
+                                   ),
+                                   body=str(n))
+        while self.response is None:
+            self.connection.process_data_events()
+        # return int(self.response)
+        return self.response
+
+
+fibonacci_rpc = FibonacciRpcClient()
+while True:
+    cmd = input('CMD:').strip()
+    response = fibonacci_rpc.call(cmd)
+    print(response.decode())

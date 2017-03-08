@@ -1,3 +1,4 @@
+import re
 import pika
 import uuid
 
@@ -5,7 +6,7 @@ import uuid
 class FibonacciRpcClient(object):
     def __init__(self):
         self.result_dict = {}
-        self.connection = pika.BlockingConnection(pika.ConnectionParameters(host='59.110.166.147'))
+        self.connection = pika.BlockingConnection(pika.ConnectionParameters(host='192.168.100.5'))
         # self.connection = pika.BlockingConnection(pika.ConnectionParameters(host='localhost'))
         self.channel = self.connection.channel()
         self.channel.exchange_declare(exchange='logs', type='fanout')
@@ -22,12 +23,25 @@ class FibonacciRpcClient(object):
             print('dose not have this task_id.')
 
     def call(self, n):
+        # run "fsdfdsf" --host 192.168.1.1
+        # 接收到用户输入run, 筛查命令是否合格
+        # run "asfsaf" --host 192.168.4.45
+        a = re.search('run\s+[\"|\'](.+)[\"|\']\s+\-{2}host\s+(.*)', n)
+
+        try:
+            print(a)
+            assert a.group() == n
+            print(a.groups())
+        except:
+            print('输入有误，例：run "command" --host HostIP1, HostIP2……')
+            return
+        # 生成task_id
         temp = str(len(self.result_dict)+1)
+        # 生成随机queue
         result = self.channel.queue_declare(exclusive=True)
         callback_queue = result.method.queue
         t_id = str(uuid.uuid4())
         self.result_dict[temp] = [t_id, callback_queue]
-
         self.channel.basic_publish(exchange='logs',
                                    routing_key='',
                                    properties=pika.BasicProperties(
@@ -49,7 +63,10 @@ while True:
         fibonacci_rpc.call(user_input)
     elif user_input.startswith('c'):
         task_id = user_input.split('c')[1].strip()
-        fibonacci_rpc.get_t_id(task_id)
+        if task_id.isdigit():
+            fibonacci_rpc.get_t_id(task_id)
+        else:
+            print('输入有误')
     else:
         print('input err')
     # print('i got it:\n', response)
