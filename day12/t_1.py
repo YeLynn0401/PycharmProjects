@@ -34,7 +34,7 @@ class Student_class(Base):  # 班级表
 
 
 class Student_class_relationship(Base):  # 学生班级
-    __tablename__= 'student_class_relationship'
+    __tablename__ = 'student_class_relationship'
     id = Column(Integer, primary_key=True)
     stu_id = Column(Integer, ForeignKey('student.id'))
     class_id = Column(Integer, ForeignKey('student_class.id'))

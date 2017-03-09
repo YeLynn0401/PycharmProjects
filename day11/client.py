@@ -23,15 +23,10 @@ class FibonacciRpcClient(object):
             print('dose not have this task_id.')
 
     def call(self, n):
-        # run "fsdfdsf" --host 192.168.1.1
-        # 接收到用户输入run, 筛查命令是否合格
-        # run "asfsaf" --host 192.168.4.45
         a = re.search('run\s+[\"|\'](.+)[\"|\']\s+\-{2}host\s+(.*)', n)
-
         try:
-            print(a)
+            # 接收到用户输入run, 筛查命令是否合格
             assert a.group() == n
-            print(a.groups())
         except:
             print('输入有误，例：run "command" --host HostIP1, HostIP2……')
             return
@@ -61,8 +56,8 @@ while True:
     user_input = input('>>>:').strip()
     if user_input.startswith('run'):
         fibonacci_rpc.call(user_input)
-    elif user_input.startswith('c'):
-        task_id = user_input.split('c')[1].strip()
+    elif user_input.startswith('check_task'):
+        task_id = user_input.split('check_task')[1].strip()
         if task_id.isdigit():
             fibonacci_rpc.get_t_id(task_id)
         else:

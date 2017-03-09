@@ -21,17 +21,17 @@ channel.queue_bind(exchange='logs', queue=queue_name)
 
 def on_request(ch, method, props, body):
     send_body = ''
-    print(body.decode())
+    # print(body.decode())
     # 提取IP地址
     date_list = body.decode().split('--host')
     if len(date_list) == 2:
         ip_list = date_list[1].split()
-        print(localIP)
+        # print(localIP)
         if localIP in ip_list:
             a = re.search('run\s+[\"|\']{1}(.+)[\"|\']{1}', date_list[0])
             # 筛选命令行中可执行命令
             comm = a.groups()[0]
-            print(comm)
+            # print(comm)
             obj = subprocess.Popen(comm, shell=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT)
             date = obj.stdout.read()
             # 按平台解析字符串编码
