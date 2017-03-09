@@ -8,9 +8,11 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import sessionmaker, relationship
 
-engine = create_engine("mysql+pymysql://root:123456@192.168.100.5/test",
+
+engine = create_engine("mysql+pymysql://root:123456@192.168.100.5/test?charset=utf8",
                        encoding='utf-8', echo=False)
 Base = declarative_base()  # 生成orm基类
+
 
 
 class Host(Base):
@@ -69,7 +71,5 @@ class UserPermission(Base):
     user_id = Column(Integer, ForeignKey('user.id'))
     host_m2m_hostuser_id = Column(Integer, ForeignKey('host_m2m_hostuser.id'))
     m = relationship('Host_m2m_Hostuser')
-
-
 
 Base.metadata.create_all(engine)

@@ -2,8 +2,9 @@
 # -*- coding: utf-8 -*- 
 
 
-from day12 import t1
 from sqlalchemy.orm import sessionmaker
+
+from day12.test import t1
 
 session_class = sessionmaker(bind=t1.engine)
 session = session_class()

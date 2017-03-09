@@ -7,5 +7,9 @@ import os
 # str = struct.pack("128si", bytes('/'+'name'), 22)
 # print('str:', str,)
 # help(struct)
-print(bytes('a', encoding='utf8'))
-''.encode().decode()
+# print(bytes('a', encoding='utf8'))
+# ''.encode().decode()
+
+f = open('test.txt', 'a', encoding='utf8')
+f.write('asffasf')
+f.close()

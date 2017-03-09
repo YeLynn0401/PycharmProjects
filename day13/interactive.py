@@ -33,10 +33,10 @@ except ImportError:
 
 def interactive_shell(client_name, hostname, username, chan):
     if has_termios:
-        posix_shell(client_name,hostname, username, chan)
+        posix_shell(client_name, hostname, username, chan)
     else:
         try:
-            windows_shell(client_name,hostname, username, chan)
+            windows_shell(client_name, hostname, username, chan)
         except:
             pass
 
@@ -90,8 +90,8 @@ def posix_shell(client_name, hostname, username, chan):
 def windows_shell(client_name,hostname, username, chan):
     import threading
     sys.stdout.write("Line-buffered terminal emulation. Press F6 or ^Z to send EOF.\r\n\r\n")
-    def writeall(sock):
 
+    def writeall(sock):
         while True:
             data = sock.recv(256)
             if not data:
@@ -102,7 +102,7 @@ def windows_shell(client_name,hostname, username, chan):
             sys.stdout.flush()
     writer = threading.Thread(target=writeall, args=(chan,))
     writer.start()
-        
+
     try:
         tem = []
         while True:
@@ -111,10 +111,14 @@ def windows_shell(client_name,hostname, username, chan):
                 break
             chan.send(d)
             if d == '\n':
-                print('{}'.format(time.strftime("%Y-%m-%d-%H:%M:%S", time.localtime())), client_name, hostname, username, 'cmd:', ''.join(tem))
+                cmd_log = ' '.join(('{}'.format(time.strftime("%Y-%m-%d-%H:%M:%S", time.localtime())), client_name, hostname, username, 'cmd:', ''.join(tem), '\n'))
+                print(cmd_log)
+
+                with open('logs/cmd.log', 'a', encoding='utf8') as f_log:
+                    f_log.write(cmd_log)
                 tem = []
                 continue
             tem.append(d)
-    except EOFError:
+    except Exception as e:
         # user hit ^Z or F6
-        pass
+        print(e)

@@ -4,6 +4,7 @@
 import base64
 from binascii import hexlify
 import getpass
+import logging
 import os
 import select
 import socket
@@ -22,7 +23,7 @@ except ImportError:
 
 class conn:
     def __init__(self, client_name, host, port, user_name, pwd, key):
-        # paramiko.util.log_to_file('demo.log')
+        paramiko.util.log_to_file('logs/ssh.log', level='WARNING')
 
         username = ''
         # 主机地址
@@ -87,6 +88,10 @@ class conn:
                 p = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'keys', key)
                 if os.path.isfile(p):
                     self.manual_auth(username, hostname, pwd, p)
+                else:
+                    print('no key')
+            if not self.t.is_authenticated():
+                self.manual_auth(username, hostname, pwd, None)
             if not self.t.is_authenticated():
                 print('*** Authentication failed. :(')
                 print('请联系管理员')
@@ -96,6 +101,7 @@ class conn:
             chan = self.t.open_session()
             chan.get_pty()
             chan.invoke_shell()
+            logging.info('{} ssh to {}@{}'.format(client_name, username, hostname))
             print('*** Here we go!\n')
             interactive.interactive_shell(client_name, hostname, username, chan)
             chan.close()
@@ -131,7 +137,7 @@ class conn:
                 print('... nope.')
 
     def manual_auth(self, username, hostname, pwd, key_file):
-        print(key_file)
+        # 默认密码登陆
         auth = 'p'
 
         if key_file:
@@ -154,7 +160,7 @@ class conn:
             except:
                 # key登陆失败 使用密码
                 print('key 不好使，还是得用密码')
-                self.manual_auth(username, hostname, pwd, '')
+                self.manual_auth(username, hostname, pwd, None)
         elif auth == 'd':
             default_path = os.path.join(os.environ['HOME'], '.ssh', 'id_dsa')
             path = input('DSS key [%s]: ' % default_path)
