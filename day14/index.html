@@ -3,137 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <title>京东商城</title>
-    <style>
-        .top{
-            height: 30px;
-            background: #F1F1F1;
-            line-height: 30px;
-        }
-        .w{
-            width: 1210px;
-            margin: 0 auto;
-
-            color: #666;
-
-
-        }
-        .w span{
-            margin: 10px;
-        }
-        .s{
-            font: 400 12px/30px consolas;
-        }
-        .short{
-            width: 1px;
-            height: 12px;
-            background: #ddd;
-            display: inline-block;
-
-
-        }
-        .logo img{
-            width: 270px;
-            height: 60px;
-            padding: 20px 0;
-        }
-        .logo{
-            width: 362px;
-            position: relative;
-            display: inline-block;
-            line-height: 60px;
-        }
-        .logos{
-            border: 1px red;
-            line-height: 60px;
-            position: relative;
-        }
-        .classification{
-            position: absolute;
-            top: 15px;
-            left: 168px;
-            width: 180px;
-            height: 70px;
-            right: 0;
-            background: #fff;
-
-        }
-         .classification div{
-             padding: 0 10px;
-         }
-         .search{
-             border: 2px solid #B61D1D;
-             width: 538px;
-             height: 36px;
-             display: inline-block;
-             top: 40px;
-             position: absolute;
-             line-height: 3;
-         }
-         .search input{
-             height: 29px;
-             width: 454px;
-             border: 0;
-         }
-         .car{
-             display: inline-block;
-             line-height: 34px;
-             position: absolute;
-             width: 138px;
-             height: 36px;
-             right: 20px;
-             top: 35px;
-             border: 1px solid #dddddd;
-         }
-        body {
-            margin: 0;
-            padding: 0;
-            font: 12px/150% tahoma,arial,Microsoft YaHei,Hiragino Sans GB,"\u5b8b\u4f53",sans-serif;
-        }
-    </style>
+    <link type="text/css" rel="stylesheet" href="css/main.css">
 </head>
 <body>
-<div class="top">
-    <div class="w">
-        <span>送至：北京</span>
-        <div style="float: right">
-            <span>你好，请登录</span>
-            <span style="color: red">&nbsp;&nbsp;&nbsp;&nbsp;免费注册</span>
-            <div class="short"></div>
-            <span>我的订阅</span>
-            <div class="short"></div>
-            <span>我的京东</span>
-            <div class="short"></div>
-            <span>会员俱乐部</span>
-            <div class="short"></div>
-            <span>企业频道</span>
-            <div class="short"></div>
-            <span>手机京东</span>
-            <div class="short"></div>
-            <span>关注京东</span>
-            <div class="short"></div>
-            <span>客户服务</span>
-            <div class="short"></div>
-            <span>网站导航</span>
+    <div class="top">
+        <div class="w">
+            <span>送至：北京</span>
+            <div style="float: right">
+                <span>你好，请登录</span>
+                <span style="color: red">&nbsp;&nbsp;&nbsp;&nbsp;免费注册</span>
+                <div class="short"></div>
+                <span>我的订阅</span>
+                <div class="short"></div>
+                <span>我的京东</span>
+                <div class="short"></div>
+                <span>会员俱乐部</span>
+                <div class="short"></div>
+                <span>企业频道</span>
+                <div class="short"></div>
+                <span>手机京东</span>
+                <div class="short"></div>
+                <span>关注京东</span>
+                <div class="short"></div>
+                <span>客户服务</span>
+                <div class="short"></div>
+                <span>网站导航</span>
+            </div>
+
+        </div>
+    </div>
+    <div class="logos w">
+        <div class="logo">
+            <img src="images/jdlogo.png">
+            <div class="classification">
+                <div style="font-size: 20px; font-family: \5b8b\4f53;  display: inline-block"; >汽车</div>
+                <div style="display: inline-block; border: 1px solid #ccc; width: 63px;height: 25px; line-height: 25px;margin-top: 25px;">全部分类</div>
+            </div>
+        </div>
+        <div class="search">
+            <input type="text"/>
+            <button style=" background: #B61D1D; width: 80px;height: 38px; text-align: center; color: white; font-size: 16px;border: 0;">搜索</button>
+        </div>
+        <div class="car">
+            <div style="position: absolute;background:url(images/car.png); background-position-y: -58px; width: 20px;height: 20px ; margin: 10px;"></div>
+            <span style="margin-left: 40px">我的购物车</span>
+        </div>
+    </div>
+    <div class="classify w">
+        <div style="background: #B1191A; height: 44px;width: 300px; color: white;font-size: 15px; font-weight: 400; line-height: 44px;padding-left: 10px; display: inline-block;">
+            汽车分类
+        </div>
+        <div class="mm" style="display: inline-block;font-size: 15px;">
+            <span>整车首页</span>
+            <span>全部车型</span>
+            <span>低价买车</span>
+            <span>超值特惠</span>
+            <span>买二手车</span>
         </div>
 
     </div>
-</div>
-<div class="logos w">
-    <div class="logo">
-        <img src="jdlogo.png">
-        <div class="classification">
-            <div style="font-size: 20px; font-family: \5b8b\4f53;  display: inline-block"; >汽车</div>
-            <div style="display: inline-block; border: 1px solid #ccc; width: 63px;height: 25px; line-height: 25px;margin-top: 25px;">全部分类</div>
+    <div style="width: 100%; border-bottom: 2px solid #B1191A;"></div>
+    <div class="menu w">
+        <div class="x">按条件选车 ></div>
+        <div class="m1">
+            <h3 style="display: inline-block">汽车</h3>
+            <h3 style="display: inline-block">商品筛选</h3>
+            <span>共 799 个商品</span>
         </div>
+        <div class="brand" style="margin-bottom: 10px;margin-top:10px;height: 99px; position: relative">
+            <div style="display: inline-block; position: absolute;top: 0;">品牌:</div>
+            <ul>
+                <li><img src="images/m_2_55.png"></li>
+                <li><img src="images/m_3_55.png"></li>
+                <li><img src="images/m_7_55.png"></li>
+                <li><img src="images/m_8_55.png"></li>
+                <li><img src="images/m_9_55.png"></li>
+                <li><img src="images/m_13_55.png"></li>
+                <li><img src="images/m_17_55.png"></li>
+                <li><img src="images/m_26_55.png"></li>
+                <li><img src="images/m_30_55.png"></li>
+                <li><img src="images/m_34_55.png"></li>
+                <li><img src="images/m_49_55.png"></li>
+            </ul>
+        </div>
+        <div style="border-bottom: solid 1px #F1F1F1 "></div>
+        <div class="price" style="height: 34px; position: relative">
+            <div style="display: inline-block; position: absolute;top: 0; line-height: 34px">价格:</div>
+            <ul>
+                <li><a href="">5万以下</a></li>
+                <li><a href="">5-8万</a></li>
+                <li><a href="">8-12万</a></li>
+                <li><a href="">12-18万</a></li>
+                <li><a href="">18-25万</a></li>
+                <li><a href="">25-40万</a></li>
+                <li><a href="">40-80万</a></li>
+                <li><a href="">80万以上</a></li>
+
+            </ul>
+
+        </div>
+        <div style="clear: both"></div>
+        <div style="border-bottom: solid 1px #F1F1F1"></div>
+        <div class="price" style="height: 34px; position: relative">
+            <div style="display: inline-block; position: absolute;top: 0;line-height: 34px">价格:</div>
+            <ul>
+
+                <li><a href="">微型</a></li>
+                <li><a href="">小型</a></li>
+                <li><a href="">紧凑型</a></li>
+                <li><a href="">中型</a></li>
+                <li><a href="">中大型</a></li>
+                <li><a href="">豪华型</a></li>
+                <li><a href="">MPV</a></li>
+                <li><a href="">SUV</a></li>
+                <li><a href="">跑车</a></li>
+                <li><a href="">面包车</a></li>
+
+            </ul>
+
+        </div>
+        <div style="clear: both"></div>
+        <div style="border-bottom: solid 1px #F1F1F1"></div>
+
     </div>
-    <div class="search">
-        <input type="text"/>
-        <button style=" background: #B61D1D; width: 80px;height: 38px; text-align: center; color: white; font-size: 16px;border: 0;">搜索</button>
+    <div class="car_list w">
+        <ul>
+            <li>
+                <div class="cars_li" >
+                <img src="images/cars/1.jpg">
+                    <div style="display: inline-block">
+                        <p class="pp1">长安CS75</p>
+                        <p class="pp2">够实惠、购简单，一对一服务再拿137</p>
+                        <p class="pp3">订金：￥499.00</p>
+                        <p class="pp4">由 易车·惠买车 提供</p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="cars_li" >
+                <img src="images/cars/2.jpg">
+                    <div style="display: inline-block">
+                        <p class="pp1">长安CS75</p>
+                        <p class="pp2">够实惠、购简单，一对一服务再拿137</p>
+                        <p class="pp3">订金：￥499.00</p>
+                        <p class="pp4">由 易车·惠买车 提供</p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="cars_li" >
+                <img src="images/cars/3.jpg">
+                    <div style="display: inline-block">
+                        <p class="pp1">长安CS75</p>
+                        <p class="pp2">够实惠、购简单，一对一服务再拿137</p>
+                        <p class="pp3">订金：￥499.00</p>
+                        <p class="pp4">由 易车·惠买车 提供</p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="cars_li" >
+                <img src="images/cars/4.jpg">
+                    <div style="display: inline-block">
+                        <p class="pp1">长安CS75</p>
+                        <p class="pp2">够实惠、购简单，一对一服务再拿137</p>
+                        <p class="pp3">订金：￥499.00</p>
+                        <p class="pp4">由 易车·惠买车 提供</p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="cars_li" >
+                <img src="images/cars/5.jpg">
+                    <div style="display: inline-block">
+                        <p class="pp1">长安CS75</p>
+                        <p class="pp2">够实惠、购简单，一对一服务再拿137</p>
+                        <p class="pp3">订金：￥499.00</p>
+                        <p class="pp4">由 易车·惠买车 提供</p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="cars_li" >
+                <img src="images/cars/6.jpg">
+                    <div style="display: inline-block">
+                        <p class="pp1">长安CS75</p>
+                        <p class="pp2">够实惠、购简单，一对一服务再拿137</p>
+                        <p class="pp3">订金：￥499.00</p>
+                        <p class="pp4">由 易车·惠买车 提供</p>
+                    </div>
+                </div>
+            </li>
+
+
+        </ul>
+
     </div>
-    <div class="car">
-        <div style="position: absolute;background:url(car.png); background-position-y: -58px; width: 20px;height: 20px ; margin: 10px;"></div>
-        <span style="margin-left: 40px">我的购物车</span>
-    </div>
-</div>
 </body>
 </html>
