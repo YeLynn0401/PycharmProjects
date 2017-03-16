@@ -237,6 +237,14 @@
             border-radius: 100%;
             background-color: #fff;
         }
+        .big_imgr {
+            display: inline-block;
+            margin-right: 10px;
+            width: 12px;
+            height: 12px;
+            border-radius: 100%;
+            background-color: red;
+        }
 
         .cate_menu_lk {
             color: #ffffff;
@@ -1194,6 +1202,9 @@
         .block{
             display: block;
         }
+        .none{
+            display: none;
+        }
         .bga{
             background-color: #999395;
         }
@@ -1345,17 +1356,14 @@
     <div id="pop" class="pop"></div>
     <div class="meddle">
         <div class="inline-blok">
-            <img src="images/1.jpg">
+            <img id="imgs1" class="block" src="images/1.jpg" >
+            <img id="imgs2" class="none" src="images/2.jpg" >
+            <img id="imgs3" class="none" src="images/3.jpg" >
         </div>
-        <div class="meddle_boot bor">
-            <i class="big_img"></i>
-            <i class="big_img"></i>
-            <i class="big_img"></i>
-            <i class="big_img"></i>
-            <i class="big_img"></i>
-            <i class="big_img"></i>
-            <i class="big_img"></i>
-            <i class="big_img"></i>
+        <div class="meddle_boot">
+            <i id="y1" class="big_imgr" onmousemove="i1()"></i>
+            <i id="y2" class="big_img" onmousemove="i2()"></i>
+            <i id="y3" class="big_img" onmousemove="i3()"></i>
         </div>
         <div style="height: 130px;margin-top: 10px;">
             <div class="inline-blok" style="height: 130px">
@@ -3028,7 +3036,9 @@
 </div>
 <script>
     function add(id){
-        document.getElementById("pop").classList.add("block")
+        var a = document.getElementById("pop");
+            a.classList.add("block");
+            a.innerText=document.getElementById(id).innerText;
         document.getElementById(id).classList.add("bga")
 //
     }
@@ -3048,6 +3058,44 @@
             document.getElementById(id).value = "影音节";
         }
     }
+    function i1() {
+        document.getElementById("y1").className= "big_imgr";
+        document.getElementById("y2").className= "big_img";
+        document.getElementById("y3").className= "big_img";
+        document.getElementById("imgs1").className = "block";
+        document.getElementById("imgs2").className = "none";
+        document.getElementById("imgs3").className = "none";
+    }
+    function i2() {
+        document.getElementById("y1").className= "big_img";
+        document.getElementById("y2").className= "big_imgr";
+        document.getElementById("y3").className= "big_img";
+        document.getElementById("imgs1").className = "none";
+        document.getElementById("imgs2").className = "block";
+        document.getElementById("imgs3").className = "none";
+    }
+    function i3() {
+        document.getElementById("y1").className= "big_img";
+        document.getElementById("y2").className= "big_img";
+        document.getElementById("y3").className= "big_imgr";
+        document.getElementById("imgs1").className = "none";
+        document.getElementById("imgs2").className = "none";
+        document.getElementById("imgs3").className = "block";
+    }
+
+    function imgs() {
+
+        if (document.getElementById("imgs1").className == "block"){
+            i2()
+        }else if(document.getElementById("imgs2").className == "block"){
+            i3()
+        }else if(document.getElementById("imgs3").className == "block"){
+            i1()
+        }else {
+            i1()
+        }
+    }
+    setInterval("imgs()", 3000);
 </script>
 </body>
 </html>
