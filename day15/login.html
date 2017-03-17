@@ -17,14 +17,17 @@
         <div class="bg w">
         <div class="login">
             <div class="l">
-                <div class="scan_code">
+                <div class="scan_code" onclick="block()" >
                     <a href="#">扫码登录</a>
                 </div>
-                <div class="user_login">
+                <div class="user_login" onclick="none()">
                     <a href="#">账户登录</a>
                 </div>
                 <div>
-                    <div style="background-color: red;height: 305px;width: 346px;position: absolute;top: 56px;z-index: 10;" class="bor">sdfsd</div>
+                    <div id="code" class="none" style="background-color: white;height: 305px;width: 346px;position: absolute;top: 56px;z-index: 10;" class="bor">
+                        <img style="margin: 0 18px;" src="images/code.jpg">
+                        
+                    </div>
                     <div class="name input_box">
                         <div class="icon"></div>
                         <input type="text" style="border: 0;width: 262px; height: 36px; position: absolute" placeholder="邮箱/用户名/已验证手机">
@@ -136,5 +139,14 @@
         </div>
     </div>
 </div>
+<script>
+    function block() {
+        document.getElementById("code").classList.remove("none")
+    }
+    function none() {
+        document.getElementById("code").className= "none"
+    }
+
+</script>
 </body>
 </html>
