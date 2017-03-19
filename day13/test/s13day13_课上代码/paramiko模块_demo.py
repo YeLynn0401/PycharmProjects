@@ -36,7 +36,7 @@ class SSHConnection(object):
     def upload(self,local_path, target_path):
         # 连接，上传
         sftp = paramiko.SFTPClient.from_transport(self.__transport)
-        # 将location.py 上传至服务器 /tmp/test.py
+        # 将location.py 上传至服务器 /tmp/test_5.py
         sftp.put(local_path, target_path)
 
 ssh = SSHConnection()
