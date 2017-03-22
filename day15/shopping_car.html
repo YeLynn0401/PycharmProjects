@@ -29,6 +29,199 @@
             border: 1px coral solid;
         }
 
+        #all_select {
+            margin-left: 10px;
+            margin-right: 60px
+        }
+
+        .mm2 {
+            margin-left: 10px;
+            margin-right: 60px
+        }
+
+        .mm1 {
+            margin-left: 10px;
+            margin-right: 420px
+        }
+
+        .check_list {
+            margin: 0 10px;
+        }
+
+        .fix {
+            position: fixed;
+            bottom: 0;
+            background: lavender;
+        }
+
+        #bott {
+            width: 100%;
+
+        }
+
+        .count {
+            background: lavender;
+            height: 35px;
+            line-height: 35px;
+        }
+
+        .all_select {
+            border: 0;
+            background: 0;
+            margin-left: 15px;
+
+        }
+
+        .commodity_menu {
+            margin-top: 20px;
+            border-bottom: 2px solid;
+        }
+
+        .commodity_item {
+            border-style: solid;
+            border-width: 0px 1px 1px;
+            border-color: #aaa #c5c5c5 #f1f1f1;
+            position: relative;
+            padding: 10px 0 20px;
+        }
+
+        .commodity_info {
+            width: 300px;
+            margin-left: 35px;
+            padding: 15px 0 10px;
+            float: left;
+            height: 80px;
+            overflow: hidden;
+        }
+
+        .commodity_check {
+            width: 30px;
+            position: absolute;
+            left: 10px;
+        }
+
+        .commodity_img {
+            border: solid 1px #eee;
+            margin-right: 10px;
+            float: left;
+        }
+
+        .commodity_text {
+            height: 40px;
+            line-height: 20px;
+            overflow: hidden;
+        }
+
+        .commodity_return_text {
+            height: 40px;
+            margin-top: 10px;
+        }
+
+        .commodity_return_text span i {
+            background: url('images/cart-icons-2017.png') -54px -23px;
+            display: inline-block;
+            width: 17px;
+            height: 16px;
+            vertical-align: middle;
+            overflow: hidden;
+        }
+
+        .commodity_config {
+            padding: 16px 0 0 20px;
+            float: left;
+            width: 160px;
+            height: 80px;
+        }
+
+        .commodity_price {
+            padding: 20px;
+            width: 120px;
+            float: left;
+        }
+
+        .commodity_price strong {
+            font-weight: 400;
+            text-align: right;
+            display: block;
+        }
+
+        .commodity_total {
+            width: 80px;
+            float: left;
+            padding: 15px 0 10px;
+        }
+
+        .commodity_total .box {
+            position: relative;
+            overflow: hidden;
+            height: 22px;
+            width: 80px;
+        }
+
+        .commodity_total .box .less {
+            border: 1px solid #cacbcb;
+            border-right: 0;
+            height: 18px;
+            line-height: 18px;
+            padding: 1px 0;
+            width: 16px;
+            text-align: center;
+            float: left;
+        }
+
+        .commodity_total .box input {
+            position: absolute;
+            left: 17px;
+            top: 0;
+            border: 1px solid #cacbcb;
+            width: 42px;
+            height: 18px;
+            line-height: 18px;
+            text-align: center;
+            padding: 1px;
+            margin: 0;
+            font-size: 12px;
+            font-family: verdana;
+            color: #333;
+        }
+
+        .commodity_total .box .plus {
+            float: right;
+            border: 1px solid #cacbcb;
+            border-left: 0;
+            height: 18px;
+            line-height: 18px;
+            padding: 1px 0;
+            width: 16px;
+            text-align: center;
+        }
+
+        .commodity_total .status {
+            margin-left: 30px;
+        }
+
+        .commodity_price_count {
+            padding: 20px;
+            width: 70px;
+            float: left;
+        }
+
+        .commodity_price_count strong {
+            font-weight: 400;
+            text-align: left;
+            display: block;
+        }
+
+        .delete {
+            padding: 20px;
+            float: left;
+        }
+
+        .delete strong {
+            font-weight: 400;
+            text-align: left;
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -56,172 +249,436 @@
     <span style="font-weight: 700;font-size: 16px;margin-right: 20px;color: red">全部商品</span>
     <span style="font-weight: 700;font-size: 16px;">京东大药房</span>
 </div>
-<div class="w" style="height: 32px;line-height: 32px;padding: 5px 0;background: #f3f3f3;border: 1px solid #e9e9e9;border-top: 0;">
-    <label style="margin-left: 10px;margin-right: 60px"><input type="checkbox">&nbsp;&nbsp;全选</label>
-    <span style="margin-left: 10px;margin-right: 420px">商品</span>
-    <span style="margin-left: 10px;margin-right: 60px">单价</span>
-    <span style="margin-left: 10px;margin-right: 60px">数量</span>
-    <span style="margin-left: 10px;margin-right: 60px">小计</span>
-    <span style="margin-left: 10px;margin-right: 60px">操作</span>
+<div class="w"
+     style="height: 32px;line-height: 32px;padding: 5px 0;background: #f3f3f3;border: 1px solid #e9e9e9;border-top: 0;">
+    <button class="all_select">全选</button>
+    <span class="mm1">商品</span>
+    <span class="mm2">单价</span>
+    <span class="mm2">数量</span>
+    <span class="mm2">小计</span>
+    <span class="mm2">操作</span>
+</div>
+
+<div>
+    <div class="w commodity_menu">
+        <label><input type="checkbox" class="check_list">科族数码专营店</label>
+    </div>
+    <div class="w commodity_item">
+        <div class="commodity_info">
+            <div class="commodity_check">
+                <input class="commodity_checkbox" type="checkbox">
+            </div>
+            <div>
+                <div class="commodity_img">
+                    <img src="images/ipad.jpg">
+                </div>
+                <div class="commodity_text">
+                    <a href="#">
+                        【 京东仓直发 六期免息】Apple苹果 iPad Air 2平板电脑 9.7英寸 金色 32G-WLAN版
+                    </a>
+                </div>
+                <div class="commodity_return_text">
+                    <span>
+                        <i></i>
+                        <a href="#">支持7天无理由退货</a>
+                    </span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <div class="commodity_config">
+            <div>颜色：金色</div>
+            <div>尺码：32G-WLAN版</div>
+        </div>
+        <div class="commodity_price">
+            <strong>¥3008.00&nbsp;&nbsp;</strong>
+        </div>
+        <div class="commodity_total">
+            <div class="box">
+                <a class="less">-</a>
+                <input autocomplete="off" type="text" value="1">
+                <a class="plus">+</a>
+            </div>
+            <div class="status">有货</div>
+        </div>
+        <div class="commodity_price_count">
+            <strong>&nbsp;&nbsp;¥3008.00</strong>
+        </div>
+        <div class="delete">
+            <strong>&nbsp;&nbsp;删除</strong>
+        </div>
+        <div style="clear: both"></div>
+    </div>
 </div>
 <div>
-    <div class="w" style="margin-top: 20px;border-bottom: 2px solid ">
-        <label><input type="checkbox" style="margin: 0 10px">科族数码专营店</label>
+    <div class="w commodity_menu">
+        <label><input type="checkbox" class="check_list">科族数码专营店</label>
     </div>
-    <div class="w " style="border-style:solid;border-width: 0px 1px 1px;border-color: #aaa #c5c5c5 #f1f1f1;position: relative;padding: 10px 0 20px;">
-    <div style="width: 300px;margin-left: 35px;padding: 15px 0 10px;float: left;height: 80px;overflow: hidden">
-        <div style="width: 30px;position: absolute;left: 10px">
-            <input style="" type="checkbox">
-        </div>
-        <div>
-            <div style="border:solid 1px #eee;margin-right: 10px;float: left;">
-                <img src="images/ipad.jpg">
+    <div class="w commodity_item">
+        <div class="commodity_info">
+            <div class="commodity_check">
+                <input class="commodity_checkbox" type="checkbox">
             </div>
-            <div style="height: 40px;line-height: 20px;overflow: hidden;">
-                <a href="#">
-                    【 京东仓直发 六期免息】Apple苹果 iPad Air 2平板电脑 9.7英寸 金色 32G-WLAN版
-                </a>
-            </div>
-            <div style="height: 40px;    margin-top: 10px;">
-            <span>
-                <i style="background: url('images/cart-icons-2017.png' ) -54px -23px;display: inline-block;width: 17px;height: 16px;vertical-align: middle;overflow: hidden;"></i>
-                <a href="#">支持7天无理由退货</a>
-            </span>
-                <span></span>
-            </div>
-        </div>
-
-    </div>
-
-    <div style="padding: 16px 0 0 20px;float: left;width: 160px;height: 80px">
-        <div>颜色：金色</div>
-        <div>尺码：32G-WLAN版</div>
-    </div>
-    <div style="padding: 20px;width: 120px;float: left">
-        <strong style="font-weight: 400;text-align: right;display: block;">¥3008.00&nbsp;&nbsp;</strong>
-    </div>
-    <div style="width: 80px;float: left;padding: 15px 0 10px">
-        <div style="position: relative;overflow: hidden;height: 22px;width: 80px;">
-            <a href="" style="border: 1px solid #cacbcb;border-right: 0;height: 18px;line-height: 18px;padding: 1px 0;width: 16px;text-align: center;float: left">-</a>
-            <input autocomplete="off" type="text" value="1" style="position: absolute;left: 17px;top: 0;border: 1px solid #cacbcb;width: 42px;height: 18px;line-height: 18px;text-align: center;padding: 1px;margin: 0;font-size: 12px;font-family: verdana;color: #333;">
-            <a href="" style="float: right;border: 1px solid #cacbcb;border-left: 0;height: 18px;line-height: 18px;padding: 1px 0;width: 16px;text-align: center;" >+</a>
-        </div>
-        <div style="margin-left: 30px;">有货</div>
-    </div>
-    <div style="padding: 20px;width: 70px;float: left">
-        <strong style="font-weight: 400;text-align: left;display: block;">&nbsp;&nbsp;¥3008.00</strong>
-    </div>
-    <div style="padding: 20px;float: left">
-        <strong style="font-weight: 400;text-align: left;display: block;">&nbsp;&nbsp;删除</strong>
-    </div>
-    <div style="clear: both"></div>
-</div>
-</div>
-<div>
-    <div class="w" style="margin-top: 20px;border-bottom: 2px solid ">
-        <label><input type="checkbox" style="margin: 0 10px">科族数码专营店</label>
-    </div>
-    <div class="w " style="border-style:solid;border-width: 0px 1px 1px;border-color: #aaa #c5c5c5 #f1f1f1;position: relative;padding: 10px 0 20px;">
-    <div style="width: 300px;margin-left: 35px;padding: 15px 0 10px;float: left;height: 80px;overflow: hidden">
-        <div style="width: 30px;position: absolute;left: 10px">
-            <input style="" type="checkbox">
-        </div>
-        <div>
-            <div style="border:solid 1px #eee;margin-right: 10px;float: left;">
-                <img src="images/ipad.jpg">
-            </div>
-            <div style="height: 40px;line-height: 20px;overflow: hidden;">
-                <a href="#">
-                    【 京东仓直发 六期免息】Apple苹果 iPad Air 2平板电脑 9.7英寸 金色 32G-WLAN版
-                </a>
-            </div>
-            <div style="height: 40px;    margin-top: 10px;">
-            <span>
-                <i style="background: url('images/cart-icons-2017.png' ) -54px -23px;display: inline-block;width: 17px;height: 16px;vertical-align: middle;overflow: hidden;"></i>
-                <a href="#">支持7天无理由退货</a>
-            </span>
-                <span></span>
+            <div>
+                <div class="commodity_img">
+                    <img src="images/ipad.jpg">
+                </div>
+                <div class="commodity_text">
+                    <a href="#">
+                        【 京东仓直发 六期免息】Apple苹果 iPad Air 2平板电脑 9.7英寸 金色 32G-WLAN版
+                    </a>
+                </div>
+                <div class="commodity_return_text">
+                    <span>
+                        <i></i>
+                        <a href="#">支持7天无理由退货</a>
+                    </span>
+                    <span></span>
+                </div>
             </div>
         </div>
-
-    </div>
-
-    <div style="padding: 16px 0 0 20px;float: left;width: 160px;height: 80px">
-        <div>颜色：金色</div>
-        <div>尺码：32G-WLAN版</div>
-    </div>
-    <div style="padding: 20px;width: 120px;float: left">
-        <strong style="font-weight: 400;text-align: right;display: block;">¥3008.00&nbsp;&nbsp;</strong>
-    </div>
-    <div style="width: 80px;float: left;padding: 15px 0 10px">
-        <div style="position: relative;overflow: hidden;height: 22px;width: 80px;">
-            <a href="" style="border: 1px solid #cacbcb;border-right: 0;height: 18px;line-height: 18px;padding: 1px 0;width: 16px;text-align: center;float: left">-</a>
-            <input autocomplete="off" type="text" value="1" style="position: absolute;left: 17px;top: 0;border: 1px solid #cacbcb;width: 42px;height: 18px;line-height: 18px;text-align: center;padding: 1px;margin: 0;font-size: 12px;font-family: verdana;color: #333;">
-            <a href="" style="float: right;border: 1px solid #cacbcb;border-left: 0;height: 18px;line-height: 18px;padding: 1px 0;width: 16px;text-align: center;" >+</a>
+        <div class="commodity_config">
+            <div>颜色：金色</div>
+            <div>尺码：32G-WLAN版</div>
         </div>
-        <div style="margin-left: 30px;">有货</div>
+        <div class="commodity_price">
+            <strong>¥3008.00&nbsp;&nbsp;</strong>
+        </div>
+        <div class="commodity_total">
+            <div class="box">
+                <a class="less" >-</a>
+                <input autocomplete="off" type="text" value="1">
+                <a class="plus" >+</a>
+            </div>
+            <div class="status">有货</div>
+        </div>
+        <div class="commodity_price_count">
+            <strong>&nbsp;&nbsp;¥3008.00</strong>
+        </div>
+        <div class="delete">
+            <strong>&nbsp;&nbsp;删除</strong>
+        </div>
+        <div style="clear: both"></div>
     </div>
-    <div style="padding: 20px;width: 70px;float: left">
-        <strong style="font-weight: 400;text-align: left;display: block;">&nbsp;&nbsp;¥3008.00</strong>
+    <div class="w commodity_item">
+        <div class="commodity_info">
+            <div class="commodity_check">
+                <input class="commodity_checkbox" type="checkbox">
+            </div>
+            <div>
+                <div class="commodity_img">
+                    <img src="images/ipad.jpg">
+                </div>
+                <div class="commodity_text">
+                    <a href="#">
+                        【 京东仓直发 六期免息】Apple苹果 iPad Air 2平板电脑 9.7英寸 金色 32G-WLAN版
+                    </a>
+                </div>
+                <div class="commodity_return_text">
+                    <span>
+                        <i></i>
+                        <a href="#">支持7天无理由退货</a>
+                    </span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <div class="commodity_config">
+            <div>颜色：金色</div>
+            <div>尺码：32G-WLAN版</div>
+        </div>
+        <div class="commodity_price">
+            <strong>¥3008.00&nbsp;&nbsp;</strong>
+        </div>
+        <div class="commodity_total">
+            <div class="box">
+                <a class="less" >-</a>
+                <input autocomplete="off" type="text" value="1">
+                <a class="plus" >+</a>
+            </div>
+            <div class="status">有货</div>
+        </div>
+        <div class="commodity_price_count">
+            <strong>&nbsp;&nbsp;¥3008.00</strong>
+        </div>
+        <div class="delete">
+            <strong>&nbsp;&nbsp;删除</strong>
+        </div>
+        <div style="clear: both"></div>
     </div>
-    <div style="padding: 20px;float: left">
-        <strong style="font-weight: 400;text-align: left;display: block;">&nbsp;&nbsp;删除</strong>
-    </div>
-    <div style="clear: both"></div>
-</div>
 </div>
 <div>
-    <div class="w" style="margin-top: 20px;border-bottom: 2px solid ">
-        <label><input type="checkbox" style="margin: 0 10px">科族数码专营店</label>
+    <div class="w commodity_menu">
+        <label><input type="checkbox" class="check_list">科族数码专营店</label>
     </div>
-    <div class="w " style="border-style:solid;border-width: 0px 1px 1px;border-color: #aaa #c5c5c5 #f1f1f1;position: relative;padding: 10px 0 20px;">
-    <div style="width: 300px;margin-left: 35px;padding: 15px 0 10px;float: left;height: 80px;overflow: hidden">
-        <div style="width: 30px;position: absolute;left: 10px">
-            <input style="" type="checkbox">
-        </div>
-        <div>
-            <div style="border:solid 1px #eee;margin-right: 10px;float: left;">
-                <img src="images/ipad.jpg">
+    <div class="w commodity_item">
+        <div class="commodity_info">
+            <div class="commodity_check">
+                <input class="commodity_checkbox" type="checkbox">
             </div>
-            <div style="height: 40px;line-height: 20px;overflow: hidden;">
-                <a href="#">
-                    【 京东仓直发 六期免息】Apple苹果 iPad Air 2平板电脑 9.7英寸 金色 32G-WLAN版
-                </a>
-            </div>
-            <div style="height: 40px;    margin-top: 10px;">
-            <span>
-                <i style="background: url('images/cart-icons-2017.png' ) -54px -23px;display: inline-block;width: 17px;height: 16px;vertical-align: middle;overflow: hidden;"></i>
-                <a href="#">支持7天无理由退货</a>
-            </span>
-                <span></span>
+            <div>
+                <div class="commodity_img">
+                    <img src="images/ipad.jpg">
+                </div>
+                <div class="commodity_text">
+                    <a href="#">
+                        【 京东仓直发 六期免息】Apple苹果 iPad Air 2平板电脑 9.7英寸 金色 32G-WLAN版
+                    </a>
+                </div>
+                <div class="commodity_return_text">
+                    <span>
+                        <i></i>
+                        <a href="#">支持7天无理由退货</a>
+                    </span>
+                    <span></span>
+                </div>
             </div>
         </div>
-
-    </div>
-
-    <div style="padding: 16px 0 0 20px;float: left;width: 160px;height: 80px">
-        <div>颜色：金色</div>
-        <div>尺码：32G-WLAN版</div>
-    </div>
-    <div style="padding: 20px;width: 120px;float: left">
-        <strong style="font-weight: 400;text-align: right;display: block;">¥3008.00&nbsp;&nbsp;</strong>
-    </div>
-    <div style="width: 80px;float: left;padding: 15px 0 10px">
-        <div style="position: relative;overflow: hidden;height: 22px;width: 80px;">
-            <a href="" style="border: 1px solid #cacbcb;border-right: 0;height: 18px;line-height: 18px;padding: 1px 0;width: 16px;text-align: center;float: left">-</a>
-            <input autocomplete="off" type="text" value="1" style="position: absolute;left: 17px;top: 0;border: 1px solid #cacbcb;width: 42px;height: 18px;line-height: 18px;text-align: center;padding: 1px;margin: 0;font-size: 12px;font-family: verdana;color: #333;">
-            <a href="" style="float: right;border: 1px solid #cacbcb;border-left: 0;height: 18px;line-height: 18px;padding: 1px 0;width: 16px;text-align: center;" >+</a>
+        <div class="commodity_config">
+            <div>颜色：金色</div>
+            <div>尺码：32G-WLAN版</div>
         </div>
-        <div style="margin-left: 30px;">有货</div>
+        <div class="commodity_price">
+            <strong>¥3008.00&nbsp;&nbsp;</strong>
+        </div>
+        <div class="commodity_total">
+            <div class="box">
+                <a class="less" >-</a>
+                <input autocomplete="off" type="text" value="1">
+                <a class="plus" >+</a>
+            </div>
+            <div class="status">有货</div>
+        </div>
+        <div class="commodity_price_count">
+            <strong>&nbsp;&nbsp;¥3008.00</strong>
+        </div>
+        <div class="delete">
+            <strong>&nbsp;&nbsp;删除</strong>
+        </div>
+        <div style="clear: both"></div>
     </div>
-    <div style="padding: 20px;width: 70px;float: left">
-        <strong style="font-weight: 400;text-align: left;display: block;">&nbsp;&nbsp;¥3008.00</strong>
-    </div>
-    <div style="padding: 20px;float: left">
-        <strong style="font-weight: 400;text-align: left;display: block;">&nbsp;&nbsp;删除</strong>
-    </div>
-    <div style="clear: both"></div>
 </div>
+<div>
+    <div class="w commodity_menu">
+        <label><input type="checkbox" class="check_list">科族数码专营店</label>
+    </div>
+    <div class="w commodity_item">
+        <div class="commodity_info">
+            <div class="commodity_check">
+                <input class="commodity_checkbox" type="checkbox">
+            </div>
+            <div>
+                <div class="commodity_img">
+                    <img src="images/ipad.jpg">
+                </div>
+                <div class="commodity_text">
+                    <a href="#">
+                        【 京东仓直发 六期免息】Apple苹果 iPad Air 2平板电脑 9.7英寸 金色 32G-WLAN版
+                    </a>
+                </div>
+                <div class="commodity_return_text">
+                    <span>
+                        <i></i>
+                        <a href="#">支持7天无理由退货</a>
+                    </span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <div class="commodity_config">
+            <div>颜色：金色</div>
+            <div>尺码：32G-WLAN版</div>
+        </div>
+        <div class="commodity_price">
+            <strong>¥3008.00&nbsp;&nbsp;</strong>
+        </div>
+        <div class="commodity_total">
+            <div class="box">
+                <a class="less" >-</a>
+                <input autocomplete="off" type="text" value="1">
+                <a class="plus" >+</a>
+            </div>
+            <div class="status">有货</div>
+        </div>
+        <div class="commodity_price_count">
+            <strong>&nbsp;&nbsp;¥3008.00</strong>
+        </div>
+        <div class="delete">
+            <strong>&nbsp;&nbsp;删除</strong>
+        </div>
+        <div style="clear: both"></div>
+    </div>
 </div>
+<div>
+    <div class="w commodity_menu">
+        <label><input type="checkbox" class="check_list">科族数码专营店</label>
+    </div>
+    <div class="w commodity_item">
+        <div class="commodity_info">
+            <div class="commodity_check">
+                <input class="commodity_checkbox" type="checkbox">
+            </div>
+            <div>
+                <div class="commodity_img">
+                    <img src="images/ipad.jpg">
+                </div>
+                <div class="commodity_text">
+                    <a href="#">
+                        【 京东仓直发 六期免息】Apple苹果 iPad Air 2平板电脑 9.7英寸 金色 32G-WLAN版
+                    </a>
+                </div>
+                <div class="commodity_return_text">
+                    <span>
+                        <i></i>
+                        <a href="#">支持7天无理由退货</a>
+                    </span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <div class="commodity_config">
+            <div>颜色：金色</div>
+            <div>尺码：32G-WLAN版</div>
+        </div>
+        <div class="commodity_price">
+            <strong>¥3008.00&nbsp;&nbsp;</strong>
+        </div>
+        <div class="commodity_total">
+            <div class="box">
+                <a class="less" >-</a>
+                <input autocomplete="off" type="text" value="1">
+                <a class="plus" >+</a>
+            </div>
+            <div class="status">有货</div>
+        </div>
+        <div class="commodity_price_count">
+            <strong>&nbsp;&nbsp;¥3008.00</strong>
+        </div>
+        <div class="delete">
+            <strong>&nbsp;&nbsp;删除</strong>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+</div>
+
+
+<div style="height: 500px"></div>
+<div id="bott">
+    <div class="w count">
+        <button class="all_select">全选</button>
+        <span style="float: right">共计：￥0</span>
+    </div>
+</div>
+<div style="height: 800px"></div>
+<script src="jquery.min.js"></script>
+<script>
+    s_top = $("#bott").offset().top;
+    function fix() {
+        var w_height = $(window).height();
+        if ($(window).scrollTop() < (s_top - w_height)) {
+            if (!$("#bott").hasClass("fix")) {
+                $("#bott").addClass("fix")
+            }
+        } else {
+            if ($("#bott").hasClass("fix")) {
+                $("#bott").removeClass("fix")
+            }
+        }
+    }
+    ;
+    $(function () {
+        fix()
+    });
+    // 总计框浮动
+    $(window).scroll(function () {
+        fix()
+    });
+    // 商品数量减
+    $(".less").click(function () {
+        console.log('1');
+        var a = $(this).next("input");
+        var n = parseInt(a.val());
+        if(n){
+            if(n >0){
+                a.val(parseInt(a.val())-1);
+            }else {
+                a.val(0);
+            }
+        }else {
+            if(n !=0){
+                a.val(0);
+            }
+
+        }
+    });
+    // 商品数量加
+    $(".plus").click(function () {
+
+        var a = $(this).prev("input");
+        var n = parseInt(a.val());
+        console.log(n);
+        if(n){
+            if(n >0){
+                a.val(parseInt(a.val())+1);
+            }else {
+                a.val(1);
+            }
+        }else {
+            a.val(1);
+        }
+    });
+    // 删除商品
+    $(".delete").click(function () {
+//        console.log(($(this).parent(".commodity_item").siblings(".commodity_item")).length);
+//        $(this).parent(".commodity_item").remove();
+        if(($(this).parent(".commodity_item").siblings(".commodity_item")).length){
+            $(this).parent(".commodity_item").remove();
+        }else {
+            $(this).parent(".commodity_item").parent().remove();
+        }
+    });
+    // 全选
+    $(".all_select").click(function () {
+        if($("input[type='checkbox']").prop("checked")){
+            $("input[type='checkbox']").prop("checked",false);
+        }else {
+            $("input[type='checkbox']").prop("checked",true);
+        }
+    });
+    // 店铺下商品全选中，店铺自动选中
+    $(".commodity_checkbox").click(function () {
+        var a = $(this).parents(".commodity_item").siblings(".commodity_item");
+//        console.log(a.length);
+        if ($(this).prop("checked")){
+            if(a.length){
+                if(a.find(".commodity_checkbox").prop("checked")){
+                    $(this).parents(".commodity_item").siblings(".commodity_menu").find("input[type='checkbox']").prop("checked",true);
+            }
+            }else {
+                //店铺里只买了一个商品
+                $(this).parents(".commodity_item").siblings(".commodity_menu").find("input[type='checkbox']").prop("checked",true);
+            }
+        }else {
+            $(this).parents(".commodity_item").siblings(".commodity_menu").find("input[type='checkbox']").prop("checked",false);
+        }
+
+//        if($(this).prop("checked")){
+//            console.log($(this).parents(".commodity_item").siblings(".commodity_menu").find("commodity_checkbox").prop("checked"))
+//        }else {
+//
+//        }
+//        console.log($(this).parents(".commodity_item").siblings(".commodity_item").find(".commodity_checkbox").prop("checked"))
+    })
+    // 勾选店铺，子商品全部选中
+    $(".check_list").click(function () {
+        if($(this).prop("checked")){
+            $(this).parent().parent().siblings(".commodity_item").find("input[type='checkbox']").prop("checked",true);
+        }else {
+            $(this).parent().parent().siblings(".commodity_item").find("input[type='checkbox']").prop("checked",false);
+        }
+    });
+    // 计算价格
+    $("commodity_checkbox").prop("checked")
+</script>
 </body>
 </html>

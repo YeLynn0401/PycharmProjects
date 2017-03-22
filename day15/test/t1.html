@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .hid{
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+
+<div id="xiao" class="hhh" onclick="cc()">asfasf</div>
+<div id="xiao2" class="hhh" onclick="cc()">asfasf2</div>
+
+<script>
+//    document.getElementById("xiao").onclick=function (){console.log('111');};
+//    document.getElementById("xiao")
+//    function cc() {
+//        var a = document.getElementById("xiao").className;
+//        if(! a){
+//            document.getElementById("xiao").className = 'hid';
+//        }else {
+//            document.getElementById("xiao").className = '';
+//        }
+//    }
+//["asd",1,3434,"3234"]
+a[2]
+
+
+    function cc() {
+        var a = document.getElementsByClassName("hhh");
+        for(var i in a){
+//            console.log(i)
+            a[i].className="hid"
+        }
+
+    }
+</script>
+</body>
+</html>
