@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="checkbox">
+<input type="checkbox">
+<input type="checkbox">
+<input type="checkbox">
+<script src="../css/jquery.min.js"></script>
+<script>
+    $("input").click(function () {
+        console.log($("input").filter(function () {return $(this).prop("checked")}).length == $("input").length)
+        console.log($("input").length)
+    });
+
+
+</script>
+</body>
+</html>

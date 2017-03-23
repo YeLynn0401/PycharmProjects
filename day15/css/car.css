@@ -1,0 +1,220 @@
+* {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font: 12px/150% tahoma, arial, Microsoft YaHei, Hiragino Sans GB, "\u5b8b\u4f53", sans-serif;
+            color: #666;
+            background: #fff;
+        }
+
+        a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .w {
+            width: 990px;
+            margin: 0 auto;
+        }
+
+        .bor {
+            border: 1px coral solid;
+        }
+
+        #all_select {
+            margin-left: 10px;
+            margin-right: 60px
+        }
+
+        .mm2 {
+            margin-left: 10px;
+            margin-right: 60px
+        }
+
+        .mm1 {
+            margin-left: 10px;
+            margin-right: 420px
+        }
+
+        .check_list {
+            margin: 0 10px;
+        }
+
+        .fix {
+            position: fixed;
+            bottom: 0;
+            background: lavender;
+        }
+
+        #bott {
+            width: 100%;
+
+        }
+
+        .count {
+            background: lavender;
+            height: 35px;
+            line-height: 35px;
+        }
+
+        .all_select {
+            border: 0;
+            background: 0;
+            margin-left: 15px;
+
+        }
+
+        .commodity_menu {
+            margin-top: 20px;
+            border-bottom: 2px solid;
+        }
+
+        .commodity_item {
+            border-style: solid;
+            border-width: 0px 1px 1px;
+            border-color: #aaa #c5c5c5 #f1f1f1;
+            position: relative;
+            padding: 10px 0 20px;
+        }
+
+        .commodity_info {
+            width: 300px;
+            margin-left: 35px;
+            padding: 15px 0 10px;
+            float: left;
+            height: 80px;
+            overflow: hidden;
+        }
+
+        .commodity_check {
+            width: 30px;
+            position: absolute;
+            left: 10px;
+        }
+
+        .commodity_img {
+            border: solid 1px #eee;
+            margin-right: 10px;
+            float: left;
+        }
+
+        .commodity_text {
+            height: 40px;
+            line-height: 20px;
+            overflow: hidden;
+        }
+
+        .commodity_return_text {
+            height: 40px;
+            margin-top: 10px;
+        }
+
+        .commodity_return_text span i {
+            background: url('../images/cart-icons-2017.png') -54px -23px;
+            display: inline-block;
+            width: 17px;
+            height: 16px;
+            vertical-align: middle;
+            overflow: hidden;
+        }
+
+        .commodity_config {
+            padding: 16px 0 0 20px;
+            float: left;
+            /*width: 160px;*/
+            height: 80px;
+        }
+
+        .commodity_price {
+            padding: 28px;
+            width: 65px;
+            float: left;
+            line-height: 0;
+        }
+
+        .commodity_price strong {
+            font-weight: 400;
+            text-align: left;
+            display: block;
+            margin-left: 10px;
+        }
+
+        .commodity_total {
+            width: 90px;
+            float: left;
+            padding: 15px 0 10px;
+        }
+
+        .commodity_total .box {
+            position: relative;
+            overflow: hidden;
+            height: 22px;
+            width: 80px;
+        }
+
+        .commodity_total .box .less {
+            border: 1px solid #cacbcb;
+            border-right: 0;
+            height: 18px;
+            line-height: 18px;
+            padding: 1px 0;
+            width: 16px;
+            text-align: center;
+            float: left;
+        }
+
+        .commodity_total .box input {
+            position: absolute;
+            left: 17px;
+            top: 0;
+            border: 1px solid #cacbcb;
+            width: 42px;
+            height: 18px;
+            line-height: 18px;
+            text-align: center;
+            padding: 1px;
+            margin: 0;
+            font-size: 12px;
+            font-family: verdana;
+            color: #333;
+        }
+
+        .commodity_total .box .plus {
+            float: right;
+            border: 1px solid #cacbcb;
+            border-left: 0;
+            height: 18px;
+            line-height: 18px;
+            padding: 1px 0;
+            width: 16px;
+            text-align: center;
+        }
+
+        .commodity_total .status {
+            margin-left: 30px;
+        }
+
+        .commodity_price_count {
+            padding: 20px;
+            width: 70px;
+            float: left;
+        }
+
+        .commodity_price_count strong {
+            font-weight: 400;
+            text-align: left;
+            /*display: block;*/
+        }
+
+        .delete {
+            padding: 20px;
+            float: left;
+        }
+
+        .delete strong {
+            font-weight: 400;
+            text-align: left;
+            display: block;
+        }

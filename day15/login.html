@@ -26,14 +26,14 @@
                 <div>
                     <div id="code" class="none" style="background-color: white;height: 305px;width: 346px;position: absolute;top: 56px;z-index: 10;" class="bor">
                         <img style="margin: 0 18px;" src="images/code.jpg">
-                        
                     </div>
-                    <div class="name input_box">
+                    <div class="name input_box" style="position: relative">
+                        <span style="position: absolute;top: -20px;color: red;display: none">用户名不能为空</span>
                         <div class="icon"></div>
                         <input type="text" style="border: 0;width: 262px; height: 36px; position: absolute" placeholder="邮箱/用户名/已验证手机">
-
                     </div>
-                    <div class="pwd input_box">
+                    <div class="pwd input_box" style="position: relative">
+                        <span style="position: absolute;top: -20px;color: red;display: none">密码不能为空</span>
                         <div class="icon icon2"></div>
                         <input type="text" style="border: 0;width: 262px; height: 36px; position: absolute" placeholder="密码">
                     </div>
@@ -139,6 +139,7 @@
         </div>
     </div>
 </div>
+<script src="css/jquery.min.js"></script>
 <script>
     function block() {
         document.getElementById("code").classList.remove("none")
@@ -146,7 +147,14 @@
     function none() {
         document.getElementById("code").className= "none"
     }
-
+    // 用户名密码不能为空
+    $("input").blur(function () {
+        if(!$(this).val()){
+            $(this).siblings("span").css("display","block")
+        }else {
+            $(this).siblings("span").css("display","none")
+        }
+    });
 </script>
 </body>
 </html>
