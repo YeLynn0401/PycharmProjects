@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        td{
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+<button id="all_checked">全选</button>
+<button id="exchenge">反选</button>
+<button id="exit">取消</button>
+<button id="edit">编辑</button>
+<table>
+    <tr>
+        <td>name</td>
+        <td>ip</td>
+        <td>port</td>
+        <td>选择</td>
+    </tr>
+    <tr>
+        <td class="edit">1</td>
+        <td class="edit">2</td>
+        <td class="edit">3</td>
+        <td><input type="checkbox"></td>
+    </tr>
+
+
+</table>
+<script src="jquery.min.js"></script>
+<script>
+    $("#all_checked").click(function () {
+        $("input[type='checkbox']").prop("checked", true)
+    });
+    $("#exit").click(function () {
+        $("input[type='checkbox']").prop("checked", false)
+    });
+    $("#exchenge").click(function () {
+        $("input[type='checkbox']").each(function () {
+            if($(this).prop("checked")){
+                $(this).prop("checked",false)
+            }else {
+                $(this).prop("checked",true)
+            }
+        })
+    });
+    $("#edit").click(function () {
+        $(".edit").each(function () {
+            var val = $(this).text();
+            $(this).empty();
+            $(this).append()
+        })
+    });
+</script>
+</table>
+</body>
+</html>
