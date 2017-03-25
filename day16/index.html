@@ -5,7 +5,7 @@
     <title>Title</title>
     <style>
         td{
-            border: 1px solid red;
+            border: 1px solid lavender;
         }
     </style>
 </head>
@@ -21,38 +21,105 @@
         <td>port</td>
         <td>选择</td>
     </tr>
-    <tr>
-        <td class="edit">1</td>
-        <td class="edit">2</td>
-        <td class="edit">3</td>
-        <td><input type="checkbox"></td>
+    <tr class="edit_tr">
+        <td class="edit">Server0</td>
+        <td class="edit">192.168.1.1</td>
+        <td class="edit">22</td>
+        <td class="check"><input type="checkbox"></td>
     </tr>
+        <tr class="edit_tr">
+        <td class="edit">Server0</td>
+        <td class="edit">192.168.1.2</td>
+        <td class="edit">22</td>
+        <td class="check"><input type="checkbox"></td>
+    </tr>
+        <tr class="edit_tr">
+        <td class="edit">Server0</td>
+        <td class="edit">192.168.1.3</td>
+        <td class="edit">22</td>
+        <td class="check"><input type="checkbox"></td>
+    </tr>
+        <tr class="edit_tr">
+        <td class="edit">Server0</td>
+        <td class="edit">192.168.1.4</td>
+        <td class="edit">22</td>
+        <td class="check"><input type="checkbox"></td>
+    </tr>
+
+
 
 
 </table>
 <script src="jquery.min.js"></script>
 <script>
+    // 全选
     $("#all_checked").click(function () {
-        $("input[type='checkbox']").prop("checked", true)
+        $("input[type='checkbox']").prop("checked", true).change()
     });
+    //取消全选
     $("#exit").click(function () {
-        $("input[type='checkbox']").prop("checked", false)
+        $("input[type='checkbox']").prop("checked", false).change()
     });
+    //反选
     $("#exchenge").click(function () {
+        // 遍历所有checkbox
         $("input[type='checkbox']").each(function () {
             if($(this).prop("checked")){
-                $(this).prop("checked",false)
+                $(this).prop("checked",false).change()
             }else {
-                $(this).prop("checked",true)
+                $(this).prop("checked",true).change()
             }
         })
     });
+    // 编辑
     $("#edit").click(function () {
-        $(".edit").each(function () {
-            var val = $(this).text();
-            $(this).empty();
-            $(this).append()
-        })
+        //点击编辑
+        if($(this).text()=="编辑"){
+            $(".edit_tr").each(function () {
+                //检查选择框状态
+                var check = $(this).find("input[type='checkbox']").prop("checked");
+//                console.log(check);
+                //把所有text改为input
+                $(this).children(".edit").each(function () {
+                    var val = $(this).text();
+                    $(this).empty();
+                    var inp = document.createElement("input");
+                    inp.value=val;
+                    //未被选中的不可编辑
+                    if(!check){
+                        inp.disabled= true;
+                    }
+                    $(this).append(inp)
+                });
+            });
+            //改变按钮状态
+            $(this).text("取消编辑");
+        }else {
+            //点击取消编辑
+            $(".edit_tr").each(function () {
+                //遍历所有input
+                $(this).children(".edit").children("input").each(function () {
+                    //取出input的value并删除，把内容添加到父div的text中
+                    var val = $(this).val();
+                    $(this).parent().text(val);
+                    $(this).remove();
+                });
+            });
+            //改变按钮状态
+            $(this).text("编辑");
+
+        }
+
+    });
+    // 当点击checkbox时触发
+    $(".check input").change(function () {
+        // 根据用户勾选情况改变可编辑状态
+        if($(this).prop("checked")){
+            $(this).parent().siblings(".edit").children("input").prop("disabled",false);
+        }else {
+            $(this).parent().siblings(".edit").children("input").prop("disabled",true);
+        }
+
     });
 </script>
 </table>
